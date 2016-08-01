@@ -1,0 +1,10 @@
+# Project dependencies
+#
+# Requires Carthage (https://github.com/Carthage/Carthage)
+# To install Carthage use Homebrew ("brew install carthage")
+#
+# To pull and build the dependencies run:
+# carthage update
+#
+
+github "memononen/nanovg" "master"
