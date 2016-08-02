@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Neon
 
 // Note that not all cursor styles will be supported by the host system.
 public enum CursorStyle {
@@ -23,7 +24,7 @@ public enum CursorStyle {
     case resizeDiagonalLeft
 }
 
-public class View : Responder {
+public class View : Responder, Neon.Frameable, Neon.Anchorable, Neon.Alignable, Neon.Groupable  {
 
     internal private(set) var superview : View?
 
@@ -101,7 +102,8 @@ public class View : Responder {
     }
 
     override public var nextResponder : Responder? {
-        // Always our superview (see https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/EventArchitecture/EventArchitecture.html)
+        // Always our superview
+        // (see https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/EventArchitecture/EventArchitecture.html)
         return self.superview
     }
 
@@ -119,17 +121,17 @@ public class View : Responder {
         }
     }
 
-    public func bringToFront(subview: View) {
-        if subview.superview == self {
-            self.subviews.remove(subview)
-            self.subviews.append(subview)
+    public func bringToFront(subview sv: View) {
+        if sv.superview == self {
+            self.subviews.remove(sv)
+            self.subviews.append(sv)
         }
     }
 
-    public func sendToBack(subview: View) {
-        if subview.superview == self {
-            self.subviews.remove(subview)
-            self.subviews.insert(subview, atIndex:0)
+    public func sendToBack(subview sv: View) {
+        if sv.superview == self {
+            self.subviews.remove(sv)
+            self.subviews.insert(sv, atIndex:0)
         }
     }
 
@@ -212,7 +214,7 @@ public class View : Responder {
     // }
 
     // Frameable
-    var superFrame : CGRect {
+    public var superFrame : CGRect {
         if let superview = self.superview {
             return superview.frame
         }
@@ -221,7 +223,7 @@ public class View : Responder {
         }
     }
 
-    func setDimensionAutomatically() {
+    public func setDimensionAutomatically() {
         var bounds = self.bounds
         let preferredSize = self.preferredSize
         if !preferredSize.isEmpty && bounds.size != preferredSize {
