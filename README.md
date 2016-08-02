@@ -1,6 +1,5 @@
 
-# An OpenGL window API implemented in Swift.
-# Built on NanoVG - an OpenGL based vector drawing library.
+# An OpenGL vector graphics and GUI library based on nanovg. Implemented in Swift.
 
 ## Building
 
@@ -10,16 +9,16 @@
    To do this create a C or Objective-C file and simply include the appropriate header.
    e.g. For OpenGL3
 
-   #import <Nano/nanovg_gl3.h>
+        #import <Nano/nanovg_gl3.h>
    
-3. If you're using Swift you will also need to add the same header to your bridging header to import the NanoVG symbols into Swift.
+3. If you're using Swift you will also need to add the same header to your bridging header. This imports the NanoVG symbols into Swift.
 
 4. Before creating a Nano Context you must call the initialize method to set the appropriate NanoVG context creation/deletion functions:
 
-    Nano.initalize(createContext: nvgCreateGL3, deleteContext: nvgDeleteGL3)
-    
-    let screen = Nano.Screen()
-    ...
+        Nano.initalize(createContext: nvgCreateGL3, deleteContext: nvgDeleteGL3)
+
+        let screen = Nano.Screen()
+        ...
 
 
 ## Dependencies
@@ -29,23 +28,24 @@ You can install Carthage via Homebrew (brew install carthage).
 
 Once installed you can fetch and build the dependencies using this command:
 
-carthage bootstrap --platform Mac
+    carthage bootstrap --platform Mac
+
 
 1. NanoVG
-   https://github.com/memononen/nanovg
+   (https://github.com/memononen/nanovg)
 
-   (Carthage)
+   Install via Carthage.
 
 2. Neon
-   https://github.com/mamaral/Neon
+   (https://github.com/mamaral/Neon)
    A Swift based layout library.
 
-   (Carthage)
+   Install via Carthage.
    
-3. Freetype v2.6.5 (optional)
-   https://www.freetype.org/
+3. Freetype v2.6.5
+   (https://www.freetype.org/)
 
-   Required for reading Adobe OFM fonts (e.g. on macOS)
+   Optional. Used for reading Adobe OFM fonts (e.g. on macOS)
    If you only need TTF support then remove FONS_USE_FREETYPE macro from the framework's Xcode Build Settings.
    
    Assumed to be installed on your system in /usr/local/ (e.g. via Homebrew).
