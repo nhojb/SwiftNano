@@ -14,6 +14,7 @@ FOUNDATION_EXPORT double NanoVersionNumber;
 //! Project version string for Nano.
 FOUNDATION_EXPORT const unsigned char NanoVersionString[];
 
+// NanoVG
+#import <Nano/nanovg.h>
+
 // In this header, you should import all the public headers of your framework using statements like #import <Nano/PublicHeader.h>
-
-

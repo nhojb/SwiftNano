@@ -7,16 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		525B4B5C1D4FC94B0082E475 /* Nano.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283976F1D4FB66800005915 /* Nano.swift */; };
+		525B4B5D1D4FC94B0082E475 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397701D4FB66800005915 /* Array.swift */; };
+		525B4B5E1D4FC94B0082E475 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397791D4FB66800005915 /* Screen.swift */; };
+		525B4B5F1D4FC94B0082E475 /* ScreenMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283977A1D4FB66800005915 /* ScreenMac.swift */; };
+		525B4B601D4FC94B0082E475 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397711D4FB66800005915 /* Color.swift */; };
+		525B4B611D4FC94B0082E475 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397721D4FB66800005915 /* Context.swift */; };
+		525B4B621D4FC94B0082E475 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397731D4FB66800005915 /* Event.swift */; };
+		525B4B631D4FC94B0082E475 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397741D4FB66800005915 /* Font.swift */; };
+		525B4B641D4FC94B0082E475 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397751D4FB66800005915 /* Geometry.swift */; };
+		525B4B651D4FC94B0082E475 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397761D4FB66800005915 /* Image.swift */; };
+		525B4B661D4FC94B0082E475 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397771D4FB66800005915 /* Label.swift */; };
+		525B4B671D4FC94B0082E475 /* Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397781D4FB66800005915 /* Responder.swift */; };
+		525B4B681D4FC94B0082E475 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283977B1D4FB66800005915 /* String.swift */; };
+		525B4B691D4FC94B0082E475 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283977C1D4FB66800005915 /* Theme.swift */; };
+		525B4B6A1D4FC94B0082E475 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283977D1D4FB66800005915 /* View.swift */; };
+		525B4B6B1D4FC94B0082E475 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283977E1D4FB66800005915 /* Window.swift */; };
 		528397321D4F97A000005915 /* Nano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528397271D4F979F00005915 /* Nano.framework */; };
-		5283974C1D4FAE7C00005915 /* fontstash.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397451D4FAE7C00005915 /* fontstash.h */; };
-		5283974D1D4FAE7C00005915 /* nanovg_gl_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397461D4FAE7C00005915 /* nanovg_gl_utils.h */; };
-		5283974E1D4FAE7C00005915 /* nanovg_gl.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397471D4FAE7C00005915 /* nanovg_gl.h */; };
-		5283974F1D4FAE7C00005915 /* nanovg.c in Sources */ = {isa = PBXBuildFile; fileRef = 528397481D4FAE7C00005915 /* nanovg.c */; };
-		528397501D4FAE7C00005915 /* nanovg.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397491D4FAE7C00005915 /* nanovg.h */; };
-		528397511D4FAE7C00005915 /* stb_image.h in Headers */ = {isa = PBXBuildFile; fileRef = 5283974A1D4FAE7C00005915 /* stb_image.h */; };
-		528397521D4FAE7C00005915 /* stb_truetype.h in Headers */ = {isa = PBXBuildFile; fileRef = 5283974B1D4FAE7C00005915 /* stb_truetype.h */; };
-		528397561D4FB21A00005915 /* Nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397541D4FB21A00005915 /* Nano.h */; };
 		5283975A1D4FB25900005915 /* NanoUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397581D4FB25900005915 /* NanoUnitTests.swift */; };
+		528397621D4FB34D00005915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528397611D4FB34D00005915 /* AppDelegate.swift */; };
+		528397641D4FB34D00005915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528397631D4FB34D00005915 /* Assets.xcassets */; };
+		528397671D4FB34D00005915 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528397651D4FB34D00005915 /* MainMenu.xib */; };
+		5283976D1D4FB5CD00005915 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5283976C1D4FB5CD00005915 /* libfreetype.6.dylib */; };
+		528397A91D4FBA0D00005915 /* Nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397541D4FB21A00005915 /* Nano.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52C5FC591D4FF8E5008EEFDA /* Nano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528397271D4F979F00005915 /* Nano.framework */; };
+		52C5FC5B1D4FF901008EEFDA /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5FC5A1D4FF901008EEFDA /* DemoView.swift */; };
+		52E7D6B31D50C99A007288D6 /* nanovg_gl.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E7D6B21D50C99A007288D6 /* nanovg_gl.m */; };
+		52E7D6C81D50E3B8007288D6 /* fontstash.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C01D50E3B1007288D6 /* fontstash.h */; };
+		52E7D6C91D50E3B8007288D6 /* stb_image.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C51D50E3B1007288D6 /* stb_image.h */; };
+		52E7D6CA1D50E3B8007288D6 /* stb_truetype.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C61D50E3B1007288D6 /* stb_truetype.h */; };
+		52E7D6CB1D50E3BC007288D6 /* nanovg_gl_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C11D50E3B1007288D6 /* nanovg_gl_utils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6CC1D50E3BC007288D6 /* nanovg_gl.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C21D50E3B1007288D6 /* nanovg_gl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6CD1D50E3C2007288D6 /* nanovg.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6C41D50E3B1007288D6 /* nanovg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52E7D6D21D50E3D8007288D6 /* nanovg_gl2.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6CE1D50E3D4007288D6 /* nanovg_gl2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6D31D50E3D8007288D6 /* nanovg_gl3.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6CF1D50E3D4007288D6 /* nanovg_gl3.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6D41D50E3D8007288D6 /* nanovg_gles2.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6D01D50E3D4007288D6 /* nanovg_gles2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6D51D50E3D8007288D6 /* nanovg_gles3.h in Headers */ = {isa = PBXBuildFile; fileRef = 52E7D6D11D50E3D4007288D6 /* nanovg_gles3.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		52E7D6D61D50E3FD007288D6 /* nanovg.c in Sources */ = {isa = PBXBuildFile; fileRef = 52E7D6C31D50E3B1007288D6 /* nanovg.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,22 +54,58 @@
 			remoteGlobalIDString = 528397261D4F979F00005915;
 			remoteInfo = Nano;
 		};
+		52C5FC571D4FF8DD008EEFDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5283971E1D4F979F00005915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 528397261D4F979F00005915;
+			remoteInfo = Nano;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520850831D50A83B00669554 /* NanoDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NanoDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		528397271D4F979F00005915 /* Nano.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nano.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		528397311D4F97A000005915 /* NanoUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NanoUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		528397451D4FAE7C00005915 /* fontstash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fontstash.h; path = Carthage/Checkouts/nanovg/src/fontstash.h; sourceTree = "<group>"; };
-		528397461D4FAE7C00005915 /* nanovg_gl_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nanovg_gl_utils.h; path = Carthage/Checkouts/nanovg/src/nanovg_gl_utils.h; sourceTree = "<group>"; };
-		528397471D4FAE7C00005915 /* nanovg_gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nanovg_gl.h; path = Carthage/Checkouts/nanovg/src/nanovg_gl.h; sourceTree = "<group>"; };
-		528397481D4FAE7C00005915 /* nanovg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nanovg.c; path = Carthage/Checkouts/nanovg/src/nanovg.c; sourceTree = "<group>"; };
-		528397491D4FAE7C00005915 /* nanovg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nanovg.h; path = Carthage/Checkouts/nanovg/src/nanovg.h; sourceTree = "<group>"; };
-		5283974A1D4FAE7C00005915 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = Carthage/Checkouts/nanovg/src/stb_image.h; sourceTree = "<group>"; };
-		5283974B1D4FAE7C00005915 /* stb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_truetype.h; path = Carthage/Checkouts/nanovg/src/stb_truetype.h; sourceTree = "<group>"; };
 		528397531D4FB21A00005915 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		528397541D4FB21A00005915 /* Nano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Nano.h; path = Source/Nano.h; sourceTree = SOURCE_ROOT; };
 		528397571D4FB25900005915 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		528397581D4FB25900005915 /* NanoUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NanoUnitTests.swift; sourceTree = "<group>"; };
+		5283975F1D4FB34D00005915 /* NanoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		528397611D4FB34D00005915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		528397631D4FB34D00005915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		528397661D4FB34D00005915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		528397681D4FB34D00005915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5283976C1D4FB5CD00005915 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = /usr/local/Cellar/freetype/2.6.5/lib/libfreetype.6.dylib; sourceTree = "<absolute>"; };
+		5283976F1D4FB66800005915 /* Nano.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nano.swift; sourceTree = "<group>"; };
+		528397701D4FB66800005915 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		528397711D4FB66800005915 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		528397721D4FB66800005915 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		528397731D4FB66800005915 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		528397741D4FB66800005915 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		528397751D4FB66800005915 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		528397761D4FB66800005915 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		528397771D4FB66800005915 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		528397781D4FB66800005915 /* Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responder.swift; sourceTree = "<group>"; };
+		528397791D4FB66800005915 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		5283977A1D4FB66800005915 /* ScreenMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenMac.swift; sourceTree = "<group>"; };
+		5283977B1D4FB66800005915 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5283977C1D4FB66800005915 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5283977D1D4FB66800005915 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		5283977E1D4FB66800005915 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		52C5FC5A1D4FF901008EEFDA /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		52E7D6B21D50C99A007288D6 /* nanovg_gl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nanovg_gl.m; sourceTree = "<group>"; };
+		52E7D6C01D50E3B1007288D6 /* fontstash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontstash.h; sourceTree = "<group>"; };
+		52E7D6C11D50E3B1007288D6 /* nanovg_gl_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gl_utils.h; sourceTree = "<group>"; };
+		52E7D6C21D50E3B1007288D6 /* nanovg_gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gl.h; sourceTree = "<group>"; };
+		52E7D6C31D50E3B1007288D6 /* nanovg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nanovg.c; sourceTree = "<group>"; };
+		52E7D6C41D50E3B1007288D6 /* nanovg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg.h; sourceTree = "<group>"; };
+		52E7D6C51D50E3B1007288D6 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		52E7D6C61D50E3B1007288D6 /* stb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_truetype.h; sourceTree = "<group>"; };
+		52E7D6CE1D50E3D4007288D6 /* nanovg_gl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gl2.h; sourceTree = "<group>"; };
+		52E7D6CF1D50E3D4007288D6 /* nanovg_gl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gl3.h; sourceTree = "<group>"; };
+		52E7D6D01D50E3D4007288D6 /* nanovg_gles2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gles2.h; sourceTree = "<group>"; };
+		52E7D6D11D50E3D4007288D6 /* nanovg_gles3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanovg_gles3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5283976D1D4FB5CD00005915 /* libfreetype.6.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,15 +125,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5283975C1D4FB34D00005915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C5FC591D4FF8E5008EEFDA /* Nano.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5283971D1D4F979F00005915 = {
 			isa = PBXGroup;
 			children = (
-				528397421D4FAE2B00005915 /* Carthage */,
-				528397291D4F979F00005915 /* Source */,
+				52E7D6BF1D50E32C007288D6 /* nanovg_gl */,
+				528397B21D4FBC0100005915 /* NanoVG */,
+				528397291D4F979F00005915 /* Nano */,
+				528397601D4FB34D00005915 /* NanoDemo */,
 				528397351D4F97A000005915 /* NanoUnitTests */,
+				5283976E1D4FB5DA00005915 /* Frameworks */,
 				528397281D4F979F00005915 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,16 +154,34 @@
 			children = (
 				528397271D4F979F00005915 /* Nano.framework */,
 				528397311D4F97A000005915 /* NanoUnitTests.xctest */,
+				5283975F1D4FB34D00005915 /* NanoDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		528397291D4F979F00005915 /* Source */ = {
+		528397291D4F979F00005915 /* Nano */ = {
 			isa = PBXGroup;
 			children = (
+				528397701D4FB66800005915 /* Array.swift */,
+				528397711D4FB66800005915 /* Color.swift */,
+				528397721D4FB66800005915 /* Context.swift */,
+				528397731D4FB66800005915 /* Event.swift */,
+				528397741D4FB66800005915 /* Font.swift */,
+				528397751D4FB66800005915 /* Geometry.swift */,
+				528397761D4FB66800005915 /* Image.swift */,
 				528397531D4FB21A00005915 /* Info.plist */,
+				528397771D4FB66800005915 /* Label.swift */,
 				528397541D4FB21A00005915 /* Nano.h */,
+				5283976F1D4FB66800005915 /* Nano.swift */,
+				528397781D4FB66800005915 /* Responder.swift */,
+				528397791D4FB66800005915 /* Screen.swift */,
+				5283977A1D4FB66800005915 /* ScreenMac.swift */,
+				5283977B1D4FB66800005915 /* String.swift */,
+				5283977C1D4FB66800005915 /* Theme.swift */,
+				5283977D1D4FB66800005915 /* View.swift */,
+				5283977E1D4FB66800005915 /* Window.swift */,
 			);
+			name = Nano;
 			path = Source;
 			sourceTree = "<group>";
 		};
@@ -101,26 +194,52 @@
 			path = NanoUnitTests;
 			sourceTree = "<group>";
 		};
-		528397411D4FAE1B00005915 /* nanovg */ = {
+		528397601D4FB34D00005915 /* NanoDemo */ = {
 			isa = PBXGroup;
 			children = (
-				528397451D4FAE7C00005915 /* fontstash.h */,
-				528397461D4FAE7C00005915 /* nanovg_gl_utils.h */,
-				528397471D4FAE7C00005915 /* nanovg_gl.h */,
-				528397481D4FAE7C00005915 /* nanovg.c */,
-				528397491D4FAE7C00005915 /* nanovg.h */,
-				5283974A1D4FAE7C00005915 /* stb_image.h */,
-				5283974B1D4FAE7C00005915 /* stb_truetype.h */,
+				528397611D4FB34D00005915 /* AppDelegate.swift */,
+				52C5FC5A1D4FF901008EEFDA /* DemoView.swift */,
+				528397631D4FB34D00005915 /* Assets.xcassets */,
+				528397651D4FB34D00005915 /* MainMenu.xib */,
+				528397681D4FB34D00005915 /* Info.plist */,
+				520850831D50A83B00669554 /* NanoDemo-Bridging-Header.h */,
+				52E7D6B21D50C99A007288D6 /* nanovg_gl.m */,
 			);
-			name = nanovg;
+			path = NanoDemo;
 			sourceTree = "<group>";
 		};
-		528397421D4FAE2B00005915 /* Carthage */ = {
+		5283976E1D4FB5DA00005915 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				528397411D4FAE1B00005915 /* nanovg */,
+				5283976C1D4FB5CD00005915 /* libfreetype.6.dylib */,
 			);
-			name = Carthage;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		528397B21D4FBC0100005915 /* NanoVG */ = {
+			isa = PBXGroup;
+			children = (
+				52E7D6C01D50E3B1007288D6 /* fontstash.h */,
+				52E7D6C11D50E3B1007288D6 /* nanovg_gl_utils.h */,
+				52E7D6C21D50E3B1007288D6 /* nanovg_gl.h */,
+				52E7D6C31D50E3B1007288D6 /* nanovg.c */,
+				52E7D6C41D50E3B1007288D6 /* nanovg.h */,
+				52E7D6C51D50E3B1007288D6 /* stb_image.h */,
+				52E7D6C61D50E3B1007288D6 /* stb_truetype.h */,
+			);
+			name = NanoVG;
+			path = Carthage/Checkouts/nanovg/src;
+			sourceTree = "<group>";
+		};
+		52E7D6BF1D50E32C007288D6 /* nanovg_gl */ = {
+			isa = PBXGroup;
+			children = (
+				52E7D6CE1D50E3D4007288D6 /* nanovg_gl2.h */,
+				52E7D6CF1D50E3D4007288D6 /* nanovg_gl3.h */,
+				52E7D6D01D50E3D4007288D6 /* nanovg_gles2.h */,
+				52E7D6D11D50E3D4007288D6 /* nanovg_gles3.h */,
+			);
+			path = nanovg_gl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,13 +249,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5283974E1D4FAE7C00005915 /* nanovg_gl.h in Headers */,
-				5283974D1D4FAE7C00005915 /* nanovg_gl_utils.h in Headers */,
-				528397511D4FAE7C00005915 /* stb_image.h in Headers */,
-				528397561D4FB21A00005915 /* Nano.h in Headers */,
-				528397521D4FAE7C00005915 /* stb_truetype.h in Headers */,
-				528397501D4FAE7C00005915 /* nanovg.h in Headers */,
-				5283974C1D4FAE7C00005915 /* fontstash.h in Headers */,
+				52E7D6CC1D50E3BC007288D6 /* nanovg_gl.h in Headers */,
+				52E7D6D31D50E3D8007288D6 /* nanovg_gl3.h in Headers */,
+				528397A91D4FBA0D00005915 /* Nano.h in Headers */,
+				52E7D6C81D50E3B8007288D6 /* fontstash.h in Headers */,
+				52E7D6CD1D50E3C2007288D6 /* nanovg.h in Headers */,
+				52E7D6CB1D50E3BC007288D6 /* nanovg_gl_utils.h in Headers */,
+				52E7D6D51D50E3D8007288D6 /* nanovg_gles3.h in Headers */,
+				52E7D6CA1D50E3B8007288D6 /* stb_truetype.h in Headers */,
+				52E7D6D41D50E3D8007288D6 /* nanovg_gles2.h in Headers */,
+				52E7D6C91D50E3B8007288D6 /* stb_image.h in Headers */,
+				52E7D6D21D50E3D8007288D6 /* nanovg_gl2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +302,24 @@
 			productReference = 528397311D4F97A000005915 /* NanoUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5283975E1D4FB34D00005915 /* NanoDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5283976B1D4FB34D00005915 /* Build configuration list for PBXNativeTarget "NanoDemo" */;
+			buildPhases = (
+				5283975B1D4FB34D00005915 /* Sources */,
+				5283975C1D4FB34D00005915 /* Frameworks */,
+				5283975D1D4FB34D00005915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52C5FC581D4FF8DD008EEFDA /* PBXTargetDependency */,
+			);
+			name = NanoDemo;
+			productName = NanoDemo;
+			productReference = 5283975F1D4FB34D00005915 /* NanoDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,6 +336,9 @@
 					528397301D4F97A000005915 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					5283975E1D4FB34D00005915 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 528397211D4F979F00005915 /* Build configuration list for PBXProject "Nano" */;
@@ -203,6 +347,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5283971D1D4F979F00005915;
 			productRefGroup = 528397281D4F979F00005915 /* Products */;
@@ -211,6 +356,7 @@
 			targets = (
 				528397261D4F979F00005915 /* Nano */,
 				528397301D4F97A000005915 /* NanoUnitTests */,
+				5283975E1D4FB34D00005915 /* NanoDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +376,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5283975D1D4FB34D00005915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				528397641D4FB34D00005915 /* Assets.xcassets in Resources */,
+				528397671D4FB34D00005915 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -237,7 +392,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5283974F1D4FAE7C00005915 /* nanovg.c in Sources */,
+				525B4B651D4FC94B0082E475 /* Image.swift in Sources */,
+				525B4B621D4FC94B0082E475 /* Event.swift in Sources */,
+				525B4B631D4FC94B0082E475 /* Font.swift in Sources */,
+				525B4B6A1D4FC94B0082E475 /* View.swift in Sources */,
+				525B4B671D4FC94B0082E475 /* Responder.swift in Sources */,
+				525B4B641D4FC94B0082E475 /* Geometry.swift in Sources */,
+				525B4B661D4FC94B0082E475 /* Label.swift in Sources */,
+				52E7D6D61D50E3FD007288D6 /* nanovg.c in Sources */,
+				525B4B5F1D4FC94B0082E475 /* ScreenMac.swift in Sources */,
+				525B4B601D4FC94B0082E475 /* Color.swift in Sources */,
+				525B4B691D4FC94B0082E475 /* Theme.swift in Sources */,
+				525B4B6B1D4FC94B0082E475 /* Window.swift in Sources */,
+				525B4B5D1D4FC94B0082E475 /* Array.swift in Sources */,
+				525B4B5C1D4FC94B0082E475 /* Nano.swift in Sources */,
+				525B4B611D4FC94B0082E475 /* Context.swift in Sources */,
+				525B4B681D4FC94B0082E475 /* String.swift in Sources */,
+				525B4B5E1D4FC94B0082E475 /* Screen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +420,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5283975B1D4FB34D00005915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52E7D6B31D50C99A007288D6 /* nanovg_gl.m in Sources */,
+				52C5FC5B1D4FF901008EEFDA /* DemoView.swift in Sources */,
+				528397621D4FB34D00005915 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -257,7 +438,23 @@
 			target = 528397261D4F979F00005915 /* Nano */;
 			targetProxy = 528397331D4F97A000005915 /* PBXContainerItemProxy */;
 		};
+		52C5FC581D4FF8DD008EEFDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 528397261D4F979F00005915 /* Nano */;
+			targetProxy = 52C5FC571D4FF8DD008EEFDA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		528397651D4FB34D00005915 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528397661D4FB34D00005915 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		528397391D4F97A000005915 /* Debug */ = {
@@ -288,10 +485,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -351,33 +544,51 @@
 		5283973C1D4F97A000005915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					FONS_USE_FREETYPE,
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = /usr/local/include/freetype2;
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.formaltech.Nano;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		5283973D1D4F97A000005915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = /usr/local/include/freetype2;
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.formaltech.Nano;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -409,6 +620,35 @@
 			};
 			name = Release;
 		};
+		528397691D4FB34D00005915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NanoDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.formaltech.NanoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NanoDemo/NanoDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5283976A1D4FB34D00005915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NanoDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.formaltech.NanoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NanoDemo/NanoDemo-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,6 +675,15 @@
 			buildConfigurations = (
 				5283973F1D4F97A000005915 /* Debug */,
 				528397401D4F97A000005915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5283976B1D4FB34D00005915 /* Build configuration list for PBXNativeTarget "NanoDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				528397691D4FB34D00005915 /* Debug */,
+				5283976A1D4FB34D00005915 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
