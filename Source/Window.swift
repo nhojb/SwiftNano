@@ -206,27 +206,10 @@ public class Window : View {
 
     override public func mouseDown(event: Event) {
         print("window: mouseDown")
-
-        guard let target = self.target(forEvent: event) else {
-            return
-        }
-
-        if self.screen.keyWindow != self {
-            self.makeKey()
-            // TODO: We could pass on the event if the View implements acceptsFirstMouse ...
-        }
-        else if target == self {
-            if let location = event.locationInWindow {
-                if location.y < self.theme.windowHeaderHeight {
-                    self.mouseDownHeaderLocation = event.locationInWindow
-                }
+        if let location = event.locationInWindow {
+            if location.y < self.theme.windowHeaderHeight {
+                self.mouseDownHeaderLocation = event.locationInWindow
             }
-        }
-        else {
-            if target != self.firstResponder {
-                self.make(firstResponder: target)
-            }
-            target.mouseDown(event)
         }
     }
 
@@ -254,25 +237,5 @@ public class Window : View {
 
         // no-op
         self.mouseDownHeaderLocation = nil
-    }
-
-    override public func keyDown(event: Event) {
-        if let responder = self.firstResponder {
-            responder.keyDown(event)
-        }
-    }
-
-    override public func keyUp(event: Event) {
-        if let responder = self.firstResponder {
-            responder.keyUp(event)
-        }
-    }
-
-    func target(forEvent event: Event) -> View? {
-        if let locationInWindow = event.locationInWindow {
-            let pointInSuperview = locationInWindow + self.frame.origin
-            return self.hitTest(pointInSuperview:pointInSuperview)
-        }
-        return nil
     }
 }

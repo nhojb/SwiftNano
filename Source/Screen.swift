@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ScreenDelegate : class {
     // Delegate methods required for OS level cursor updates
-    func nanoScreenUpdate(cursorStyle cursorStyle: CursorStyle)
+    func nanoScreen(updateCursorStyle cursorStyle: CursorStyle)
 }
 
 public class Screen {
@@ -63,11 +63,11 @@ public class Screen {
         keyWindow = w
     }
 
-    // The mouse down target captures future mouseUp and mouseDragged events.
+    // The mouse down target permits us to capture mouseDragged events until mouseUp.
     // The target is set to nil after receiving a mouseUp event.
-    internal weak var lastMouseDownTarget : View?
+    weak var lastMouseDownTarget : View?
 
-    internal weak var lastMouseMoveTarget : View?
+    weak var lastMouseMoveTarget : View?
 
     public func process(event event: Event) {
         // debugPrint("process: ", event.type)
@@ -78,40 +78,26 @@ public class Screen {
             self.layoutIfNeeded()
             self.draw()
 
-        case .leftMouseDown:
+        case .leftMouseDown, .rightMouseDown:
             if let window = event.window {
+                if window != self.keyWindow {
+                    self.makeKey(window:window)
+                }
                 let locationInScreen = event.locationInWindow! + window.frame.origin
                 lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
-                window.mouseDown(event)
+                if let target = lastMouseDownTarget {
+                    window.make(firstResponder:target)
+                    target.mouseDown(event)
+                }
             }
 
-        case .rightMouseDown:
-            if let window = event.window {
-                let locationInScreen = event.locationInWindow! + window.frame.origin
-                lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
-                window.mouseDown(event)
-            }
+        case .leftMouseDragged, .rightMouseDragged:
+            self.lastMouseDownTarget?.mouseDragged(event)
 
-        case .leftMouseUp:
+        case .leftMouseUp, .rightMouseUp:
             if let target = self.lastMouseDownTarget {
                 self.lastMouseDownTarget = nil
                 target.mouseUp(event)
-            }
-
-        case .rightMouseUp:
-            if let target = self.lastMouseDownTarget {
-                self.lastMouseDownTarget = nil
-                target.mouseUp(event)
-            }
-
-        case .leftMouseDragged:
-            if let target = self.lastMouseDownTarget {
-                target.mouseDragged(event)
-            }
-
-        case .rightMouseDragged:
-            if let target = self.lastMouseDownTarget {
-                target.mouseDragged(event)
             }
 
         case .mouseMoved:
@@ -128,27 +114,28 @@ public class Screen {
             else {
                 self.lastMouseMoveTarget?.mouseExited(event)
 
-                self.delegate?.nanoScreenUpdate(cursorStyle: CursorStyle.arrow)
+                self.delegate?.nanoScreen(updateCursorStyle: CursorStyle.arrow)
 
                 self.lastMouseMoveTarget = target
                 target?.mouseEntered(event)
 
                 // Update cursor
                 if let cursor = target?.cursorStyle {
-                    self.delegate?.nanoScreenUpdate(cursorStyle: cursor)
+                    self.delegate?.nanoScreen(updateCursorStyle: cursor)
                 }
             }
 
         case .mouseEntered, .mouseExited:
-            self.delegate?.nanoScreenUpdate(cursorStyle:CursorStyle.arrow)
+            // Screen enter/exit events from the system.
+            self.delegate?.nanoScreen(updateCursorStyle:CursorStyle.arrow)
             self.lastMouseMoveTarget = nil
             break
 
         case .keyDown:
-            event.window?.keyDown(event)
+            self.keyWindow?.firstResponder?.keyDown(event)
 
         case .keyUp:
-            event.window?.keyUp(event)
+            self.keyWindow?.firstResponder?.keyUp(event)
         }
     }
 

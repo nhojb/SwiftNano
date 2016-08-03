@@ -200,7 +200,7 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
     }
 
     // Nano.ScreenDelegate
-    func nanoScreenUpdate(cursorStyle style: Nano.CursorStyle) {
+    func nanoScreen(updateCursorStyle style: Nano.CursorStyle) {
         switch style {
             case .ibeam:
                 NSCursor.IBeamCursor().set()

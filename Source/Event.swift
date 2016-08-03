@@ -47,4 +47,18 @@ public struct Event {
     public let window : Window?
     public let locationInWindow : CGPoint?
     public let keyCode : UInt16?
+    public internal(set) var cancelled = false
+
+    public init(timestamp: Double, type: EventType, modifierFlags: ModifierFlags, window: Window?, locationInWindow: CGPoint?, keyCode: UInt16?) {
+        self.timestamp = timestamp
+        self.type = type
+        self.modifierFlags = modifierFlags
+        self.window = window
+        self.locationInWindow = locationInWindow
+        self.keyCode = keyCode
+    }
+
+    public mutating func cancel() {
+        cancelled = true
+    }
 }

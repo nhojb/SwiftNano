@@ -95,6 +95,8 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
 
     public var cursorStyle : CursorStyle?
 
+    public var userInteractionEnabled = true
+
     public init(frame f: CGRect) {
         super.init()
         self.frame = f
@@ -188,7 +190,7 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
         // print("hitTest:", pt)
         // print("frame:", self.frame)
 
-        if self.hidden || !self.frame.contains(pt) {
+        if !self.userInteractionEnabled || self.hidden || self.alpha < 0.01 || !self.frame.contains(pt) {
             return nil
         }
 

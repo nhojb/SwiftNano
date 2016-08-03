@@ -41,50 +41,50 @@ public class Responder : Equatable, Hashable {
     }
 
     public func mouseDown(event: Event) {
-        if let next = nextResponder {
-            next.mouseDown(event)
+        if !event.cancelled {
+            nextResponder?.mouseDown(event)
         }
     }
 
     public func mouseDragged(event: Event) {
-        if let next = nextResponder {
-            next.mouseDragged(event)
+        if !event.cancelled {
+            nextResponder?.mouseDragged(event)
         }
     }
 
     public func mouseUp(event: Event) {
-        if let next = nextResponder {
-            next.mouseUp(event)
+        if !event.cancelled {
+            nextResponder?.mouseUp(event)
         }
     }
 
     public func mouseMoved(event: Event) {
-        if let next = nextResponder {
-            next.mouseMoved(event)
+        if !event.cancelled {
+            nextResponder?.mouseMoved(event)
         }
     }
 
     public func mouseEntered(event: Event) {
-        if let next = nextResponder {
-            next.mouseEntered(event)
+        if !event.cancelled {
+            nextResponder?.mouseEntered(event)
         }
     }
 
     public func mouseExited(event: Event) {
-        if let next = nextResponder {
-            next.mouseExited(event)
+        if !event.cancelled {
+            nextResponder?.mouseExited(event)
         }
     }
 
     public func keyDown(event: Event) {
-        if let next = nextResponder {
-            next.keyDown(event)
+        if !event.cancelled {
+            nextResponder?.keyDown(event)
         }
     }
 
     public func keyUp(event: Event) {
-        if let next = nextResponder {
-            next.keyUp(event)
+        if !event.cancelled {
+            nextResponder?.keyUp(event)
         }
     }
 }
