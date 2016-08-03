@@ -36,9 +36,9 @@ public class Screen {
         }
     }
 
-    public init() {
+    public init(contextOptions: ContextOptions = [.Antialias, .StencilStrokes]) {
         print("Screen::init")
-        if let context = Context(options: [.Antialias, .StencilStrokes, .Debug]) {
+        if let context = Context(options: contextOptions) {
             self.context = context
         }
         else {

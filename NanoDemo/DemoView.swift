@@ -12,7 +12,7 @@ import Nano
 class DemoView : NSOpenGLView, Nano.ScreenDelegate {
 
     var nanoWindow : Nano.Window?
-    var nanoScreen : Nano.ScreenMac?
+    var nanoScreen : Nano.Screen?
 
     var backgroundColor = Nano.Color(red:0.3, green:0.3, blue:0.32, alpha:1.0)
 
@@ -36,7 +36,7 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
 
         Nano.View.debugDrawing = true
 
-        self.nanoScreen = Nano.ScreenMac()
+        self.nanoScreen = Nano.Screen()
         self.nanoScreen!.delegate = self
         self.nanoScreen!.size = self.bounds.size
 
@@ -106,14 +106,10 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
         // Clear various GL bits (GL_STENCIL_BUFFER_BIT for nanovg)
         glClear(UInt32(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT))
 
-        CGLLockContext(openGLContext.CGLContextObj)
-
         nanoScreen.draw()
 
         // Flush is required to actually flush the drawing cmds to OpenGL
         CGLFlushDrawable(openGLContext.CGLContextObj)
-
-        CGLUnlockContext(openGLContext.CGLContextObj)
     }
 
     // Events

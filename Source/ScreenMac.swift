@@ -9,31 +9,31 @@
 import Foundation
 import AppKit
 
-public class ScreenMac : Screen {
+public extension Screen {
 
-    static let nsEventTypeMap : [NSEventType: EventType] = [.LeftMouseDown: .leftMouseDown,
-                                                                .LeftMouseUp: .leftMouseUp,
-                                                                .RightMouseDown: .rightMouseDown,
-                                                                .RightMouseUp: .rightMouseUp,
-                                                                .MouseMoved: .mouseMoved,
-                                                                .LeftMouseDragged: .leftMouseDragged,
-                                                                .RightMouseDragged: .rightMouseDragged,
-                                                                .MouseEntered: .mouseEntered,
-                                                                .MouseExited: .mouseExited,
-                                                                .KeyDown: .keyDown,
-                                                                .KeyUp: .keyUp]
+    static private let nsEventTypeMap : [NSEventType: EventType] = [.LeftMouseDown: .leftMouseDown,
+                                                                    .LeftMouseUp: .leftMouseUp,
+                                                                    .RightMouseDown: .rightMouseDown,
+                                                                    .RightMouseUp: .rightMouseUp,
+                                                                    .MouseMoved: .mouseMoved,
+                                                                    .LeftMouseDragged: .leftMouseDragged,
+                                                                    .RightMouseDragged: .rightMouseDragged,
+                                                                    .MouseEntered: .mouseEntered,
+                                                                    .MouseExited: .mouseExited,
+                                                                    .KeyDown: .keyDown,
+                                                                    .KeyUp: .keyUp]
 
-    static let nsEventModifierFlagsMap : [UInt: ModifierFlags] = [NSEventModifierFlags.AlphaShiftKeyMask.rawValue: .AlphaShiftKeyMask,
-                                                                      NSEventModifierFlags.ShiftKeyMask.rawValue: .ShiftKeyMask,
-                                                                      NSEventModifierFlags.ControlKeyMask.rawValue: .ControlKeyMask,
-                                                                      NSEventModifierFlags.AlternateKeyMask.rawValue: .AlternateKeyMask,
-                                                                      NSEventModifierFlags.CommandKeyMask.rawValue: .CommandKeyMask,
-                                                                      NSEventModifierFlags.NumericPadKeyMask.rawValue: .NumericPadKeyMask,
-                                                                      NSEventModifierFlags.HelpKeyMask.rawValue: .HelpKeyMask,
-                                                                      NSEventModifierFlags.FunctionKeyMask.rawValue: .FunctionKeyMask]
+    static private let nsEventModifierFlagsMap : [UInt: ModifierFlags] = [NSEventModifierFlags.AlphaShiftKeyMask.rawValue: .AlphaShiftKeyMask,
+                                                                          NSEventModifierFlags.ShiftKeyMask.rawValue: .ShiftKeyMask,
+                                                                          NSEventModifierFlags.ControlKeyMask.rawValue: .ControlKeyMask,
+                                                                          NSEventModifierFlags.AlternateKeyMask.rawValue: .AlternateKeyMask,
+                                                                          NSEventModifierFlags.CommandKeyMask.rawValue: .CommandKeyMask,
+                                                                          NSEventModifierFlags.NumericPadKeyMask.rawValue: .NumericPadKeyMask,
+                                                                          NSEventModifierFlags.HelpKeyMask.rawValue: .HelpKeyMask,
+                                                                          NSEventModifierFlags.FunctionKeyMask.rawValue: .FunctionKeyMask]
 
     public func process(nsEvent event: NSEvent, location: CGPoint) {
-        guard let nanoType = ScreenMac.nsEventTypeMap[event.type] else {
+        guard let nanoType = Screen.nsEventTypeMap[event.type] else {
             fatalError("Invalid NSEventType")
         }
 
@@ -80,11 +80,11 @@ public class ScreenMac : Screen {
         self.process(event:nanoEvent)
     }
 
-    func convertNSEventModifierFlags(modifierFlags : NSEventModifierFlags) -> ModifierFlags {
+    private func convertNSEventModifierFlags(modifierFlags : NSEventModifierFlags) -> ModifierFlags {
 
         var nanoModifierFlags = ModifierFlags(rawValue:0)
 
-        for (nsRawValue, nanoFlag) in ScreenMac.nsEventModifierFlagsMap {
+        for (nsRawValue, nanoFlag) in Screen.nsEventModifierFlagsMap {
             let flag = NSEventModifierFlags(rawValue:nsRawValue)
             if modifierFlags.contains(flag) {
                 nanoModifierFlags.insert(nanoFlag)
