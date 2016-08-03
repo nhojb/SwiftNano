@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Neon
 
 // Note that not all cursor styles will be supported by the host system.
 public enum CursorStyle {
@@ -24,7 +23,7 @@ public enum CursorStyle {
     case resizeDiagonalLeft
 }
 
-public class View : Responder, Neon.Frameable, Neon.Anchorable, Neon.Alignable, Neon.Groupable  {
+public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
 
     internal private(set) var superview : View?
 

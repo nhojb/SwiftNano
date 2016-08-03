@@ -8,4 +8,4 @@
 #
 
 github "memononen/nanovg" "master"
-github "mamaral/Neon" "master"
+github "nhojb/Neon" "master"
