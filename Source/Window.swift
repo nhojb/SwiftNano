@@ -39,14 +39,20 @@ public class Window : View {
 
     private var mouseDownHeaderLocation : CGPoint?
 
+    private var contentView : View
+
     public init(screen: Screen, flags: WindowFlags = WindowFlags(rawValue:0)) {
         self.flags = flags
         self.screen = screen
-        theme = Theme(context:screen.context)
+        self.theme = Theme(context:screen.context)
 
-        super.init(frame: CGRect(origin:CGPoint(), size:screen.size))
+        let frame = CGRect(origin:CGPoint(), size:screen.size)
+        self.contentView = View(frame: frame)
+
+        super.init(frame: frame)
 
         screen.add(window:self)
+        super.add(subview:self.contentView)
     }
 
     public func makeKey() {
@@ -78,6 +84,29 @@ public class Window : View {
         return false
     }
 
+    // View
+    override public func add(subview sv: View) {
+        self.contentView.add(subview:sv)
+    }
+
+    override public func bringToFront(subview sv: View) {
+        self.contentView.bringToFront(subview:sv)
+    }
+
+    override public func sendToBack(subview sv: View) {
+        self.contentView.sendToBack(subview:sv)
+    }
+
+    override public func layoutSubviews() {
+        var contentPadding : CGFloat = 0.0
+        if flags.contains(.TitleBar) {
+            contentPadding = theme.windowHeaderHeight
+        }
+        self.contentView.fillSuperview(top:contentPadding)
+
+        super.layoutSubviews()
+    }
+
     override public func draw(context ctx: Context) {
         // print("Window::draw")
         // print("size:", self.bounds.size)
@@ -96,8 +125,6 @@ public class Window : View {
 
         defer {
             ctx.restore()
-
-            // TODO: We should have a "contentView" under which all content is placed - this would take into account the titleBar...
 
             // Draw subviews
             super.draw(context: ctx)
