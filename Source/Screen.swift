@@ -15,11 +15,11 @@ public protocol ScreenDelegate : class {
 
 public class Screen {
 
-    internal private(set) var context : Context
+    public private(set) var context : Context
 
-    internal private(set) var windows = [Window]()
+    public private(set) var windows = [Window]()
 
-    internal private(set) var keyWindow : Window?
+    public private(set) var keyWindow : Window?
 
     public weak var delegate : ScreenDelegate?
 

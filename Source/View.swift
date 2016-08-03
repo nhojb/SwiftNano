@@ -25,9 +25,9 @@ public enum CursorStyle {
 
 public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
 
-    internal private(set) var superview : View?
+    public private(set) var superview : View?
 
-    internal private(set) var subviews = [View]()
+    public private(set) var subviews = [View]()
 
     public var window : Window? {
         return self.superview?.window

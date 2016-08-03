@@ -36,11 +36,9 @@ public class Window : View {
     }
 
     // weak: may be set to nil by the runtime (hence optional type)
-    internal private(set) weak var firstResponder : Responder?
+    public private(set) weak var firstResponder : Responder?
 
-    private var mouseDownHeaderLocation : CGPoint?
-
-    private var contentView : View
+    public let contentView : View
 
     public init(screen: Screen, flags: WindowFlags = WindowFlags(rawValue:0)) {
         self.flags = flags
@@ -62,7 +60,7 @@ public class Window : View {
         // TODO: Activate initialFirstResponder?
     }
 
-    var isKey : Bool  {
+    public var isKey : Bool  {
         get {
             return self.screen.keyWindow == self
         }
