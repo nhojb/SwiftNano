@@ -34,9 +34,9 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
 
         Nano.initialize(createContext:nvgCreateGL2, deleteContext:nvgDeleteGL2)
 
-        Nano.View.debugDrawing = true
+        //Nano.View.debugDrawing = true
 
-        self.nanoScreen = Nano.Screen()
+        self.nanoScreen = Nano.Screen(contextOptions:[.Antialias, .Debug])
         self.nanoScreen!.delegate = self
         self.nanoScreen!.size = self.bounds.size
 

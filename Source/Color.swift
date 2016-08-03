@@ -21,7 +21,7 @@ public struct Color : Equatable {
         self.alpha = a
     }
 
-    public init(white w: Float, alpha a: Float) {
+    public init(white w: Float, alpha a: Float = 1.0) {
         self.red = w
         self.green = w
         self.blue = w

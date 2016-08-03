@@ -40,7 +40,7 @@ public struct ModifierFlags : OptionSetType {
     static public let FunctionKeyMask = ModifierFlags(rawValue: 1 << 23)
 }
 
-public struct Event {
+public class Event {
     public let timestamp : Double
     public let type : EventType
     public let modifierFlags : ModifierFlags
@@ -58,7 +58,7 @@ public struct Event {
         self.keyCode = keyCode
     }
 
-    public mutating func cancel() {
+    public func cancel() {
         cancelled = true
     }
 }

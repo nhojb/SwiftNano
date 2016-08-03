@@ -232,17 +232,18 @@ public class Context {
 
     /// Clipping
     ///
-    /// Clipping allows you to clip the rendering into a rectangle. This is useful for various
-    /// user interface cases like rendering a text edit or a timeline.
+    /// Clipping allows you to clip the rendering into a rectangle.
 
     public func set(clippingRegion rect: CGRect) {
         nvgScissor(context, Float(rect.origin.x), Float(rect.origin.y), Float(rect.size.width), Float(rect.size.height))
     }
 
-    public func intersectClipping(region rect: CGRect) {
+    /// Sets a new clipping region, being the intersection of the current and new region.
+    public func intersect(clippingRegion rect: CGRect) {
         nvgIntersectScissor(context, Float(rect.origin.x), Float(rect.origin.y), Float(rect.size.width), Float(rect.size.height))
     }
 
+    /// Reset and disable clipping
     public func resetClipping() {
         nvgResetScissor(context)
     }
@@ -345,11 +346,9 @@ public class Context {
 
     /// Convenience method
     public func fill(rect rect: CGRect, withColor color: Color) {
-        self.save()
         self.beginPath()
         self.add(rect:rect)
         self.fill(withColor:color)
-        self.restore()
     }
 
     /// Strokes the current path with current stroke style.
@@ -367,11 +366,9 @@ public class Context {
 
     /// Convenience method
     public func stroke(rect rect: CGRect, withColor color: Color) {
-        self.save()
         self.beginPath()
         self.add(rect:rect)
         self.stroke(withColor:color)
-        self.restore()
     }
 
     /// Fonts

@@ -97,6 +97,10 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
 
     public var userInteractionEnabled = true
 
+    public var clipsToBounds : Bool {
+        return true
+    }
+
     public init(frame f: CGRect) {
         super.init()
         self.frame = f
@@ -156,6 +160,9 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
             // Translate context to view's coordinates
             let offset = sv.frame.origin
             ctx.translate(dx:offset.x, dy:offset.y)
+            if sv.clipsToBounds {
+                ctx.intersect(clippingRegion:sv.bounds)
+            }
             sv.draw(context:ctx)
             ctx.restore()
         }
@@ -175,7 +182,7 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
     }
 
     public var preferredSize : CGSize {
-        // TODO: Handle layout/enumerate subviews?
+        // TODO: Support fixed size (e.g. via flags like autoresizingMask?)
         return CGSize()
     }
 

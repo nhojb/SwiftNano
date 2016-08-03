@@ -38,7 +38,10 @@ public class Screen {
 
     public init(contextOptions: ContextOptions = [.Antialias, .StencilStrokes]) {
         print("Screen::init")
-        if let context = Context(options: contextOptions) {
+        var options = contextOptions
+        options.insert(.StencilStrokes) // required
+
+        if let context = Context(options: options) {
             self.context = context
         }
         else {
@@ -84,10 +87,13 @@ public class Screen {
                     self.makeKey(window:window)
                 }
                 let locationInScreen = event.locationInWindow! + window.frame.origin
-                lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
-                if let target = lastMouseDownTarget {
+                self.lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
+                if let target = self.lastMouseDownTarget {
                     window.make(firstResponder:target)
                     target.mouseDown(event)
+                    if event.cancelled {
+                        self.lastMouseDownTarget = nil
+                    }
                 }
             }
 
@@ -157,7 +163,7 @@ public class Screen {
     }
 
     public func layoutIfNeeded() {
-        print("Screen::layoutIfNeeded")
+        //print("Screen::layoutIfNeeded")
 
         for window in self.windows {
             // TODO:

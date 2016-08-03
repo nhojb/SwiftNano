@@ -17,6 +17,7 @@ public struct WindowFlags : OptionSetType {
 
     static public let TitleBar = WindowFlags(rawValue: 1)
     static public let Resizable = WindowFlags(rawValue: 2)
+    static public let FullScreen = WindowFlags(rawValue: 4)
 }
 
 public class Window : View {
@@ -84,6 +85,17 @@ public class Window : View {
         return false
     }
 
+    // Set this to restrict to control the windows minium size
+    public var minimumContentSize = CGSize(width:100.0, height:200.0) {
+        didSet {
+            var windowSize = minimumContentSize
+            if self.flags.contains(.TitleBar) {
+                windowSize.height += self.theme.windowHeaderHeight
+            }
+            self.bounds = CGRect(origin:self.bounds.origin, size:windowSize)
+        }
+    }
+
     // View
     override public func add(subview sv: View) {
         self.contentView.add(subview:sv)
@@ -107,6 +119,30 @@ public class Window : View {
         super.layoutSubviews()
     }
 
+    override public var frame : CGRect {
+        get {
+            return super.frame
+        }
+        set(newFrame) {
+            var frame = newFrame
+            frame.size = CGSize(width:max(frame.size.width, minimumContentSize.width),
+                                height:max(frame.size.height, minimumContentSize.height))
+            super.frame = frame
+        }
+    }
+
+    override public var bounds : CGRect {
+        get {
+            return super.bounds
+        }
+        set(newBounds) {
+            var bounds = newBounds
+            bounds.size = CGSize(width:max(bounds.size.width, minimumContentSize.width),
+                                height:max(bounds.size.height, minimumContentSize.height))
+            super.bounds = bounds
+        }
+    }
+
     override public func draw(context ctx: Context) {
         // print("Window::draw")
         // print("size:", self.bounds.size)
@@ -128,6 +164,8 @@ public class Window : View {
 
             // Draw subviews
             super.draw(context: ctx)
+
+            ctx.resetClipping()
 
             ctx.translate(dx: -frame.origin.x, dy:-frame.origin.y)
         }
@@ -158,7 +196,27 @@ public class Window : View {
         ctx.set(pathWindingDirection:NVG_HOLE.rawValue)
         ctx.fill(withPaint:shadowPaint)
 
-        if self.flags.contains(WindowFlags.TitleBar) {
+        // Clip to bounds from now on (including subviews)
+        ctx.set(clippingRegion:self.bounds)
+
+        if self.flags.contains(.Resizable) {
+            // Draw a resize handle in the bottom-left corner:
+            var resizeFrame = self.resizeHandleFrame
+
+            let indent : CGFloat = 2.0
+            let strokeColor = Color(white:0.5)
+            for idx in 0...2 {
+                if idx > 0 {
+                    resizeFrame = resizeFrame.makeInset(left:indent, top:indent, right:0.0, bottom:0.0)
+                }
+                ctx.beginPath()
+                ctx.move(to:resizeFrame.bottomLeft)
+                ctx.line(to:resizeFrame.topRight)
+                ctx.stroke(withColor:strokeColor)
+            }
+        }
+
+        if self.flags.contains(.TitleBar) {
             // Draw header
             let headerHeight = self.theme.windowHeaderHeight
 
@@ -225,6 +283,15 @@ public class Window : View {
         }
     }
 
+    var resizeHandleFrame : CGRect {
+        let resizeHandleWidth : CGFloat = 10.0
+        return CGRect(origin: CGPoint(x:self.bounds.maxX - resizeHandleWidth, y:self.bounds.maxY - resizeHandleWidth),
+                      size: CGSize(width:resizeHandleWidth, height:resizeHandleWidth))
+    }
+
+    private var mouseDownHeaderLocation : CGPoint?
+    private var mouseDownResizeLocation : CGPoint?
+
     // Responder
     override public var nextResponder : Responder? {
         // We've reached the top of the responder chain
@@ -232,37 +299,43 @@ public class Window : View {
     }
 
     override public func mouseDown(event: Event) {
-        print("window: mouseDown")
         if let location = event.locationInWindow {
-            if location.y < self.theme.windowHeaderHeight {
-                self.mouseDownHeaderLocation = event.locationInWindow
+            if self.flags.contains(.TitleBar) && location.y < self.theme.windowHeaderHeight {
+                self.mouseDownHeaderLocation = location
+            }
+            else if self.flags.contains(.Resizable) && self.resizeHandleFrame.contains(location) {
+                self.mouseDownResizeLocation = location
+            }
+            else {
+                event.cancel()
             }
         }
     }
 
     override public func mouseDragged(event: Event) {
-        print("window: mouseDragged")
-        print("event.window:", event.window)
-
         // Check for drag on title bar (also resize?)
-        if self.title != nil {
-            guard let location = event.locationInWindow else {
-                return
-            }
+        guard let location = event.locationInWindow else {
+            return
+        }
 
-            guard let mouseDownLocation = self.mouseDownHeaderLocation else {
-                return
-            }
-
-            let delta = (location - mouseDownLocation)
+        if let headerLocation = self.mouseDownHeaderLocation {
+            let delta = (location - headerLocation)
             self.center += delta
+        }
+        else if let resizeLocation = self.mouseDownResizeLocation {
+            let delta = (location - resizeLocation)
+            var bounds = self.bounds
+            bounds.size.width += delta.x
+            bounds.size.height += delta.y
+            self.bounds = bounds
+
+            // bounds may be constrained by minimumContentSize, so establish new "resize location"
+            self.mouseDownResizeLocation = self.bounds.bottomRight
         }
     }
 
     override public func mouseUp(event: Event) {
-        print("window: mouseUp")
-
-        // no-op
         self.mouseDownHeaderLocation = nil
+        self.mouseDownResizeLocation = nil;
     }
 }

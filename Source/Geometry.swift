@@ -65,13 +65,34 @@ extension CGRect {
         }
     }
 
+    var topLeft: CGPoint {
+        return self.origin
+    }
+
+    var topRight: CGPoint {
+        return CGPoint(x:self.maxX, y:self.origin.y)
+    }
+
+    var bottomRight: CGPoint {
+        return CGPoint(x:self.maxX, y:self.maxY)
+    }
+
+    var bottomLeft: CGPoint {
+        return CGPoint(x:self.origin.x, y:self.maxY)
+    }
+
     func makeInset(dx dx: CGFloat, dy: CGFloat) -> CGRect {
-        var inset = self
-        inset.origin.x += dx
-        inset.origin.y += dy
-        inset.size.width -= 2.0 * dx
-        inset.size.height -= 2.0 * dy
-        return inset
+        return CGRect(x:self.origin.x + dx,
+                      y:self.origin.y + dy,
+                      width:self.size.width - 2.0 * dx,
+                      height:self.size.height - 2.0 * dy)
+    }
+
+    func makeInset(left left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) -> CGRect {
+        return CGRect(x:self.origin.x + left,
+                      y:self.origin.y + top,
+                      width:self.size.width - right,
+                      height:self.size.height - bottom)
     }
 
     func contains(point: CGPoint) -> Bool {
