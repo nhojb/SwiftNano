@@ -444,7 +444,6 @@ public class Context {
 
     /// Measures the specified text string bounds. If breakWidth > 0.0 then the text is broken up onto multiple lines if necessary.
     public func boundsFor(text str: String, at point: CGPoint = CGPoint(), breakWidth: CGFloat = 0.0) -> CGRect {
-
         var bounds = [Float](count:4, repeatedValue:0.0)
 
         if ( breakWidth > 0.0 ) {
@@ -454,7 +453,12 @@ public class Context {
             nvgTextBounds(context, Float(point.x), Float(point.y), str, nil, &bounds)
         }
 
-        return CGRect(x:CGFloat(bounds[0]), y:CGFloat(bounds[1]), width:CGFloat(bounds[2]), height:CGFloat(bounds[3]))
+        let xmin = CGFloat(bounds[0])
+        let ymin = CGFloat(bounds[1])
+        let xmax = CGFloat(bounds[2])
+        let ymax = CGFloat(bounds[3])
+
+        return CGRect(x:xmin, y:ymin, width:xmax - xmin, height:ymax - ymin)
     }
 
     /// Returns the vertical metrics based on the current text style.
