@@ -34,8 +34,6 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
 
         Nano.initialize(createContext:nvgCreateGL2, deleteContext:nvgDeleteGL2)
 
-        //Nano.View.debugDrawing = true
-
         self.nanoScreen = Nano.Screen(contextOptions:[.Antialias, .Debug])
         self.nanoScreen!.delegate = self
         self.nanoScreen!.size = self.bounds.size
@@ -50,15 +48,23 @@ class DemoView : NSOpenGLView, Nano.ScreenDelegate {
         self.nanoWindow!.title = "Window"
         self.nanoWindow!.makeKey()
 
-        // Add a label:
-        let label = Nano.Label(text:"Label")
-        label.textColor = Nano.Color.white
-        label.shadowColor = Nano.Color(red:1.0, green:0.0, blue:0.0)
-        label.shadowOffset = CGSize(width:1.0, height:1.0)
+        // Add some labels
+        for idx in 1...3 {
+            let label = Nano.Label(text:"Label\(idx)")
+            label.textColor = Nano.Color.white
+            //label.textAlignment = .center
+            label.shadowColor = Nano.Color(white:0.0)
+            label.shadowOffset = CGSize(width:1.0, height:1.0)
+            label.autosizing = [.autoWidth, .autoMiddle]
 
-        self.nanoWindow!.add(subview:label)
-        label.frame = CGRect(x:10.0, y:50.0, width:100.0, height:20.0)
-        //label.sizeToFit()
+            self.nanoWindow!.add(subview:label)
+            label.frame = CGRect(x:0.0, y:0.0, width:100.0, height:20.0)
+            //label.sizeToFit()
+        }
+
+        self.nanoWindow!.layout = Nano.HorizontalLayout(alignment:Alignment(horizontal:.center, vertical:.top), innerPadding:10.0, edgeInsets:EdgeInsets(top:10.0, bottom:10.0))
+        //self.nanoWindow!.layout = Nano.VerticalLayout(alignment:Alignment(horizontal:.right, vertical:.middle), innerPadding:10.0, edgeInsets:EdgeInsets(left:10.0, right:10.0))
+        //self.nanoWindow!.layout = Nano.AutoLayout(padding:CGSize(width:10.0, height:10.0))
     }
 
     override var frame : NSRect {

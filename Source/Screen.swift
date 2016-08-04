@@ -25,7 +25,7 @@ public class Screen {
 
     public var size = CGSize() {
         didSet {
-            self.setNeeds(layout:true, display:true)
+            self.setNeeds(layout:false, display:true)
         }
     }
 
@@ -43,6 +43,10 @@ public class Screen {
 
         if let context = Context(options: options) {
             self.context = context
+
+            if options.contains(.Debug) {
+                View.debugDrawing = true
+            }
         }
         else {
             fatalError("Failed to initialize Context")
@@ -64,6 +68,9 @@ public class Screen {
 
     public func makeKey(window w: Window) {
         keyWindow = w
+        self.remove(window:w)
+        self.windows.append(w)
+        self.setNeeds(layout:false, display:true)
     }
 
     // The mouse down target permits us to capture mouseDragged events until mouseUp.
@@ -73,91 +80,92 @@ public class Screen {
     weak var lastMouseMoveTarget : View?
 
     public func process(event event: Event) {
-        // debugPrint("process: ", event.type)
-        // debugPrint("lastMouseDownTarget:", lastMouseDownTarget)
+        //print("process: ", event.type)
 
         switch event.type {
-        case .runLoop:
-            self.layoutIfNeeded()
-            self.draw()
-
-        case .leftMouseDown, .rightMouseDown:
-            if let window = event.window {
-                if window != self.keyWindow {
-                    self.makeKey(window:window)
-                }
-                let locationInScreen = event.locationInWindow! + window.frame.origin
-                self.lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
-                if let target = self.lastMouseDownTarget {
-                    window.make(firstResponder:target)
-                    target.mouseDown(event)
-                    if event.cancelled {
-                        self.lastMouseDownTarget = nil
+            case .leftMouseDown, .rightMouseDown:
+                if let window = event.window {
+                    if window != self.keyWindow {
+                        self.makeKey(window:window)
+                    }
+                    let locationInScreen = event.locationInWindow! + window.frame.origin
+                    self.lastMouseDownTarget = window.hitTest(pointInSuperview:locationInScreen)
+                    if let target = self.lastMouseDownTarget {
+                        window.make(firstResponder:target)
+                        target.mouseDown(event)
+                        if event.cancelled {
+                            self.lastMouseDownTarget = nil
+                        }
+                        window.layoutIfNeeded()
+                        // TODO: May also need to force a draw here (unless system does it for us)
                     }
                 }
-            }
 
-        case .leftMouseDragged, .rightMouseDragged:
-            self.lastMouseDownTarget?.mouseDragged(event)
-
-        case .leftMouseUp, .rightMouseUp:
-            if let target = self.lastMouseDownTarget {
-                self.lastMouseDownTarget = nil
-                target.mouseUp(event)
-            }
-
-        case .mouseMoved:
-            // Check target and notify of move/enter/exit events
-            var target : View?
-            if let window = event.window {
-                let locationInScreen = event.locationInWindow! + window.frame.origin
-                target = window.hitTest(pointInSuperview:locationInScreen)
-            }
-
-            if self.lastMouseMoveTarget == target {
-                target?.mouseMoved(event)
-            }
-            else {
-                self.lastMouseMoveTarget?.mouseExited(event)
-
-                self.delegate?.nanoScreen(updateCursorStyle: CursorStyle.arrow)
-
-                self.lastMouseMoveTarget = target
-                target?.mouseEntered(event)
-
-                // Update cursor
-                if let cursor = target?.cursorStyle {
-                    self.delegate?.nanoScreen(updateCursorStyle: cursor)
+            case .leftMouseDragged, .rightMouseDragged:
+                if let target = self.lastMouseDownTarget {
+                    target.mouseDragged(event)
+                    target.window?.layoutIfNeeded()
                 }
-            }
 
-        case .mouseEntered, .mouseExited:
-            // Screen enter/exit events from the system.
-            self.delegate?.nanoScreen(updateCursorStyle:CursorStyle.arrow)
-            self.lastMouseMoveTarget = nil
-            break
+            case .leftMouseUp, .rightMouseUp:
+                if let target = self.lastMouseDownTarget {
+                    self.lastMouseDownTarget = nil
+                    target.mouseUp(event)
+                    target.window?.layoutIfNeeded()
+                }
 
-        case .keyDown:
-            self.keyWindow?.firstResponder?.keyDown(event)
+            case .mouseMoved:
+                // Check target and notify of move/enter/exit events
+                var target : View?
+                if let window = event.window {
+                    let locationInScreen = event.locationInWindow! + window.frame.origin
+                    target = window.hitTest(pointInSuperview:locationInScreen)
+                }
 
-        case .keyUp:
-            self.keyWindow?.firstResponder?.keyUp(event)
+                if self.lastMouseMoveTarget == target {
+                    target?.mouseMoved(event)
+                }
+                else {
+                    self.lastMouseMoveTarget?.mouseExited(event)
+
+                    self.delegate?.nanoScreen(updateCursorStyle: CursorStyle.arrow)
+
+                    self.lastMouseMoveTarget = target
+                    target?.mouseEntered(event)
+
+                    // Update cursor
+                    if let cursor = target?.cursorStyle {
+                        self.delegate?.nanoScreen(updateCursorStyle: cursor)
+                    }
+                }
+
+            case .mouseEntered, .mouseExited:
+                // Screen enter/exit events from the system.
+                self.delegate?.nanoScreen(updateCursorStyle:CursorStyle.arrow)
+                self.lastMouseMoveTarget = nil
+                break
+
+            case .keyDown:
+                if let keyWindow = self.keyWindow {
+                    keyWindow.firstResponder?.keyDown(event)
+                    keyWindow.layoutIfNeeded()
+                }
+
+            case .keyUp:
+                if let keyWindow = self.keyWindow {
+                    keyWindow.firstResponder?.keyUp(event)
+                    keyWindow.layoutIfNeeded()
+                }
         }
     }
 
     public func draw() {
         print("Screen::draw")
-        print("size:", self.size)
-
         self.context.beginFrame(width:self.size.width, height:self.size.height, scale:self.scale)
 
         for window in self.windows {
             window.draw(context: self.context)
         }
-
-        // self.context.beginPath()
-        // self.context.addRect(CGRect(x:10.0, y:10.0, width:self.size.width - 20.0, height:self.size.height - 20.0))
-        // self.context.fill(withColor: Color.white)
 
         self.context.endFrame()
     }
@@ -166,19 +174,7 @@ public class Screen {
         //print("Screen::layoutIfNeeded")
 
         for window in self.windows {
-            // TODO:
-            // 1. Mouse events (move windows, interact with controls etc)
-            //
-            // 2. Layout - either via
-            // a) "Layout" classes
-            // b) NSView style layout (autoresizingMask)
-            // c) Constraints based layout (prob. too difficult, also harder to specify via code)
-            //
-            // a) May be the quickest option, reusing logic from nanogui?
-
-            if window.needsLayout {
-                window.layoutSubviews()
-            }
+            window.layoutIfNeeded()
         }
     }
 

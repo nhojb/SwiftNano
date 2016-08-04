@@ -107,14 +107,27 @@ public class Window : View {
         self.contentView.sendToBack(subview:sv)
     }
 
+    override public var layout : Layout? {
+        get {
+            return self.contentView.layout
+        }
+        set {
+            self.contentView.layout = newValue
+        }
+    }
+
     override public func layoutSubviews() {
+        self.needsLayout = false
+
         var contentPadding : CGFloat = 0.0
         if flags.contains(.TitleBar) {
             contentPadding = theme.windowHeaderHeight
         }
         self.contentView.fillSuperview(top:contentPadding)
 
-        super.layoutSubviews()
+        self.contentView.layoutSubviews()
+
+        // No call to super, contentView is our only subview.
     }
 
     override public var frame : CGRect {
@@ -254,7 +267,7 @@ public class Window : View {
                 ctx.save()
                 boldFont.size = 17.0
                 ctx.set(font:boldFont)
-                ctx.set(textAlignment: TextAlignment(horizontal:.center))
+                ctx.set(textAlignment: Alignment(horizontal:.center))
 
                 // Drop shadow
                 ctx.set(fontBlur: 2.0)

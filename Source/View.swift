@@ -23,7 +23,30 @@ public enum CursorStyle {
     case resizeDiagonalLeft
 }
 
-public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
+public struct AutoSize : OptionSetType {
+    public let rawValue : UInt
+
+    public init(rawValue: UInt) {
+        self.rawValue = rawValue
+    }
+
+    static public let none = AutoSize(rawValue: 0)
+    // Size
+    static public let fixedWidth = AutoSize(rawValue: 1<<1)
+    static public let fixedHeight = AutoSize(rawValue: 1<<2)
+    static public let autoWidth = AutoSize(rawValue: 1<<3)
+    static public let autoHeight = AutoSize(rawValue: 1<<4)
+    // Horizontal
+    static public let autoLeft = AutoSize(rawValue: 1<<5)
+    static public let autoCenter = AutoSize(rawValue: 1<<6)
+    static public let autoRight = AutoSize(rawValue: 1<<7)
+    // Vertical
+    static public let autoTop = AutoSize(rawValue: 1<<8)
+    static public let autoMiddle = AutoSize(rawValue: 1<<9)
+    static public let autoBottom = AutoSize(rawValue: 1<<10)
+}
+
+public class View : Responder, Frameable, Anchorable, Alignable, Groupable, CustomStringConvertible  {
 
     public private(set) var superview : View?
 
@@ -51,11 +74,15 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
             return CGRect(origin:origin, size:self.bounds.size)
         }
         set {
+            let oldSize = self.bounds.size
             self.bounds.size = newValue.size
             self.center = CGPoint(x: newValue.origin.x + self.bounds.size.width / 2.0,
-                                    y: newValue.origin.y + self.bounds.size.height / 2.0)
-            needsLayout = true
-            needsDisplay = true
+                                  y: newValue.origin.y + self.bounds.size.height / 2.0)
+
+            if oldSize != newValue.size {
+                needsLayout = true
+                needsDisplay = true
+            }
         }
     }
 
@@ -64,8 +91,11 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
             // Frame origin does not change, rather the view expands to the right/bottom.
             self.center.x += (self.bounds.size.width - oldValue.size.width) / 2.0
             self.center.y += (self.bounds.size.height - oldValue.size.height) / 2.0
-            needsLayout = true
-            needsDisplay = true
+
+            if oldValue.size != self.bounds.size {
+                needsLayout = true
+                needsDisplay = true
+            }
         }
     }
 
@@ -100,6 +130,10 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
     public var clipsToBounds : Bool {
         return true
     }
+
+    public var layout : Layout? = AutoLayout()
+
+    public var autosizing = AutoSize.none
 
     public init(frame f: CGRect) {
         super.init()
@@ -168,11 +202,27 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
         }
     }
 
+    public func layoutIfNeeded() {
+        print("\(self) layoutIfNeeded", self.needsLayout)
+        if self.needsLayout {
+            self.layoutSubviews()
+        }
+        else {
+            for sv in self.subviews {
+                sv.layoutIfNeeded()
+            }
+        }
+    }
+
     public func layoutSubviews() {
         self.needsLayout = false
 
-        // TODO: Handle layout of the sv itself...
-        // Layout manager?
+        // print("\(self) layoutSubviews")
+        // print("layout:", self.layout)
+
+        if let layout = self.layout {
+            layout.layout(self)
+        }
 
         for sv in self.subviews {
             if ( sv.needsLayout ) {
@@ -182,12 +232,25 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
     }
 
     public var preferredSize : CGSize {
-        // TODO: Support fixed size (e.g. via flags like autoresizingMask?)
-        return CGSize()
+        if let layout = self.layout {
+            return layout.preferredSize(self)
+        }
+        else {
+            return self.bounds.size
+        }
     }
 
     public func sizeToFit() {
-        let preferredSize = self.preferredSize
+        var preferredSize = self.preferredSize
+
+        if self.autosizing.contains(.fixedWidth) {
+            preferredSize.width = self.bounds.width
+        }
+
+        if self.autosizing.contains(.fixedHeight) {
+            preferredSize.height = self.bounds.height
+        }
+
         if !preferredSize.isEmpty && self.bounds.size != preferredSize {
             self.bounds = CGRect(origin:self.bounds.origin, size:preferredSize)
         }
@@ -238,5 +301,9 @@ public class View : Responder, Frameable, Anchorable, Alignable, Groupable  {
             bounds.size = preferredSize
             self.bounds = bounds
         }
+    }
+
+    public var description : String {
+        return "\(self.dynamicType), frame: \(frame), subviews: \(subviews.count)"
     }
 }

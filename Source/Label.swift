@@ -72,7 +72,7 @@ public class Label : View {
 
         context.save()
         context.set(font:font)
-        context.set(textAlignment: TextAlignment(horizontal:self.textAlignment))
+        context.set(textAlignment: Alignment(horizontal:self.textAlignment))
         var bounds = context.boundsFor(text:text)
         context.restore()
 
@@ -120,7 +120,7 @@ public class Label : View {
         }
 
         context.set(font:font)
-        context.set(textAlignment: TextAlignment(horizontal:self.textAlignment))
+        context.set(textAlignment: Alignment(horizontal:self.textAlignment))
 
         // Shadow
         if let shadowColor = self.shadowColor {

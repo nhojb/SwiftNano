@@ -20,7 +20,6 @@ public enum EventType {
     case mouseExited
     case keyDown
     case keyUp
-    case runLoop
 }
 
 public struct ModifierFlags : OptionSetType {

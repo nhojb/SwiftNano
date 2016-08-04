@@ -30,6 +30,7 @@
 		528397671D4FB34D00005915 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528397651D4FB34D00005915 /* MainMenu.xib */; };
 		5283976D1D4FB5CD00005915 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5283976C1D4FB5CD00005915 /* libfreetype.6.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		528397A91D4FBA0D00005915 /* Nano.h in Headers */ = {isa = PBXBuildFile; fileRef = 528397541D4FB21A00005915 /* Nano.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		529508C71D52530B007DD54F /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529508C61D52530B007DD54F /* Layout.swift */; };
 		52C5FC591D4FF8E5008EEFDA /* Nano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528397271D4F979F00005915 /* Nano.framework */; };
 		52C5FC5B1D4FF901008EEFDA /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5FC5A1D4FF901008EEFDA /* DemoView.swift */; };
 		52E7D6B31D50C99A007288D6 /* nanovg_gl.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E7D6B21D50C99A007288D6 /* nanovg_gl.m */; };
@@ -115,6 +116,7 @@
 		5283977C1D4FB66800005915 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5283977D1D4FB66800005915 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5283977E1D4FB66800005915 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		529508C61D52530B007DD54F /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		52C5FC5A1D4FF901008EEFDA /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		52E7D6B21D50C99A007288D6 /* nanovg_gl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nanovg_gl.m; sourceTree = "<group>"; };
 		52E7D6C01D50E3B1007288D6 /* fontstash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontstash.h; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				528397751D4FB66800005915 /* Geometry.swift */,
 				528397761D4FB66800005915 /* Image.swift */,
 				528397771D4FB66800005915 /* Label.swift */,
+				529508C61D52530B007DD54F /* Layout.swift */,
 				5283976F1D4FB66800005915 /* Nano.swift */,
 				528397781D4FB66800005915 /* Responder.swift */,
 				528397791D4FB66800005915 /* Screen.swift */,
@@ -468,6 +471,7 @@
 				52E7D7031D5210EC007288D6 /* NeonFrameable.swift in Sources */,
 				525B4B641D4FC94B0082E475 /* Geometry.swift in Sources */,
 				525B4B661D4FC94B0082E475 /* Label.swift in Sources */,
+				529508C71D52530B007DD54F /* Layout.swift in Sources */,
 				52E7D6D61D50E3FD007288D6 /* nanovg.c in Sources */,
 				52E7D7041D5210EC007288D6 /* NeonGroupable.swift in Sources */,
 				525B4B5F1D4FC94B0082E475 /* ScreenMac.swift in Sources */,

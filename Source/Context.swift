@@ -25,7 +25,7 @@ public struct ContextOptions : OptionSetType {
     static public let Debug = ContextOptions(rawValue: 1<<2)
 }
 
-extension TextAlignment {
+extension Alignment {
     var nvgAlign : Int32 {
         var align : UInt32 = 0
 
@@ -50,8 +50,8 @@ extension TextAlignment {
             case .bottom:
                 align |= NVG_ALIGN_BOTTOM.rawValue
 
-            case .baseline:
-                align |= NVG_ALIGN_BASELINE.rawValue
+            // case .baseline:
+            //     align |= NVG_ALIGN_BASELINE.rawValue
         }
 
         return Int32(align)
@@ -428,7 +428,7 @@ public class Context {
     }
 
     /// Sets the text align of current text style, see NVGalign for options.
-    public func set(textAlignment alignment: TextAlignment) {
+    public func set(textAlignment alignment: Alignment) {
         nvgTextAlign(context, alignment.nvgAlign)
     }
 

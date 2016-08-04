@@ -8,6 +8,61 @@
 
 import Foundation
 
+public enum HorizontalAlignment {
+    case left
+    case center
+    case right
+}
+
+public enum VerticalAlignment {
+    case top
+    case middle
+    case bottom
+}
+
+public struct Alignment {
+    public var horizontal : HorizontalAlignment
+    public var vertical : VerticalAlignment
+
+    public init(horizontal: HorizontalAlignment, vertical: VerticalAlignment) {
+        self.horizontal = horizontal
+        self.vertical = vertical
+    }
+
+    public init(horizontal: HorizontalAlignment) {
+        self.horizontal = horizontal
+        self.vertical = .middle
+    }
+}
+
+public struct EdgeInsets {
+    public var top : CGFloat
+    public var left : CGFloat
+    public var bottom : CGFloat
+    public var right : CGFloat
+
+    public init(top: CGFloat = 0.0, left: CGFloat = 0.0, bottom: CGFloat = 0.0, right: CGFloat = 0.0) {
+        self.top = top
+        self.left = left
+        self.bottom = bottom
+        self.right = right
+    }
+
+    public init(all: CGFloat) {
+        self.top = all
+        self.left = all
+        self.bottom = all
+        self.right = all
+    }
+
+    public init(horizontal: CGFloat, vertical: CGFloat) {
+        self.top = vertical
+        self.bottom = vertical
+        self.left = horizontal
+        self.right = horizontal
+    }
+}
+
 // CGPoint operators
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x:left.x + right.x, y:left.y + right.y)

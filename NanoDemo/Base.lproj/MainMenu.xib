@@ -671,14 +671,14 @@
         <window title="SwiftNano" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="702" height="516"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="702" height="516"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <openGLView depthSize="24bit" stencilSize="8bit" useAuxiliaryDepthBufferStencil="NO" useDoubleBufferingEnabled="YES" allowOffline="YES" useRecovery="YES" wantsBestResolutionOpenGLSurface="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVs-8F-n2R" customClass="DemoView" customModule="NanoDemo" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <rect key="frame" x="0.0" y="0.0" width="702" height="516"/>
                     </openGLView>
                 </subviews>
                 <constraints>
@@ -688,7 +688,7 @@
                     <constraint firstItem="sVs-8F-n2R" firstAttribute="width" secondItem="EiT-Mj-1SZ" secondAttribute="width" id="osq-Ch-WOW"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="411" y="344"/>
+            <point key="canvasLocation" x="479" y="351"/>
         </window>
     </objects>
 </document>
