@@ -1,5 +1,9 @@
 # An OpenGL vector graphics and GUI library based on nanovg. Implemented in Swift.
 
+## Status
+
+Swift Nano is currently in development and is not feature complete, nor does it have a stable API.
+
 ## Instructions
 
 1. Checkout and build the dependencies (see below).
